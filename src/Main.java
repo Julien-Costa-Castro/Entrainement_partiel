@@ -35,11 +35,12 @@ public class Main {
    // fonction copieTabEntier (tab : tableau d’entiers) retourne tableau d’entiers
 // Pr ́e-requis : aucun
 // Re ́sultat : retourne un tableau contenant les m^emes valeurs que tab dans le me^me ordre // et inde ́pendant de tab (la modification d’un des 2 tableaux ne modifie pas l’autre).
-    public void copieTabEntier(int[] tab){
+    public int[] copieTabEntier(int[] tab){
         int[] tab2 = new int[tab.length];
         for (int i = 0; i < tab.length; i++) {
             tab2[i] = tab[i];
         }
+        return tab2;
     }
 
    // fonction indiceDuMin (tab : tableau d’entiers) retourne entier
