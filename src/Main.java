@@ -57,8 +57,48 @@ public class Main {
         }
         return indice;
     }
+   // fonction numAliEnOrdre (tabIG : tableau d’entiers) retourne tableau d’entiers
+// Pr´e-requis : pour tout indice i de tabIG, tabIG[i] est l’IG de l’aliment num´ero i.
+// R´esultat : retourne un tableau contenant les num´eros des aliments en ordre
+// croissant d’IG (sans modifier le tableau tabIG).
+// Pour l’exemple ci-dessus, la fonction retourne [4, 2, 3, 1, 6, 0, 5] car
+// tabIG[4] <= tabIG[2] <= tabIG[3] <= tabIG[1] <= tabIG[6] <= tabIG[0] <= tabIG[5].
+// Strat´egie : celle conseill´ee `a M. Dubitatif par l’´etudiant de l’IUT info.
 
+    public int[] numAliEnOrdre(int[] tabIG){
+        int[] tab = new int[tabIG.length];
+        for (int i = 0; i < tabIG.length; i++) {
+            tab[i] = fonctionIndiceDuMin(tabIG);
+        }
+        return tab;
+    }
 
+    // Pr´e-requis : tabAli contient des noms d’aliments, tabIG les IG de ces aliments,
+// tabNum des num´eros d’aliments (indices de tabAli)
+// et 0 <= k <= tabNum.longueur.
+// Action : affiche les noms et IG des aliments de tabAli dont les num´eros
+// sont les k derni`eres valeurs de tabNum.
+// Pour l’exemple ci-dessus, si tabNum = [1, 3, 0, 5] et k = 2, la fonction affiche :
+// l’aliment baguette de pain a un IG de 80
+// l’aliment carottes cuites a un IG de 85
+
+    public void afficheKAliIG(String[] tabAli, int[] tabIG, int k) {
+        int[] tabNum = new int[tabAli.length];
+        for (int i = 0; i < tabAli.length; i++) {
+            tabNum[i] = fonctionIndiceDuMin(tabIG);
+        }
+        for (int i = 0; i < k; i++) {
+            System.out.println("l’aliment " + tabAli[tabNum[i]] + " a un IG de " + tabIG[tabNum[i]]);
+        }
+    }
+
+// Pr´e-requis : tabAli contient des noms d’aliments, tabIG les IG de ces aliments
+// et 0 <= k <= tabAli.longueur.
+// Action : affiche les noms et les IG de k aliments de tabAli avec le plus fort IG
+// (sans modifier les tableaux tabAli et tabIG).
+    public void attentionDiabete2(String[] tabAli, int[] tabIG, int k){
+
+    }
 
     public static void main(String[] args) {
         Main main = new Main();
@@ -67,5 +107,7 @@ public class Main {
         main.attentionDiabete(main.tabAli(), main.tabIG());
         main.copieTabEntier(main.tabIG());
         main.fonctionIndiceDuMin(main.tabIG());
+        main.numAliEnOrdre(main.tabIG());
+        main.afficheKAliIG(main.tabAli(), main.tabIG(), 2);
     }
 }
